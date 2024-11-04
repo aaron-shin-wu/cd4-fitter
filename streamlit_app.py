@@ -69,8 +69,14 @@ if st.button("Click to Run"):
         # Calculate the sum
         result = run_fitter(target_mean, target_stdv, upper_limit)
 
+        sampled_mean, sampled_sd = get_sample_dist_values(result[0], result[1], upper_limit)
+
         # Display the result
-        st.write("The sum is:", result)
+        st.markdown(f"**Output mean:**  **{result[0]}**")
+        st.markdown(f"**Output std dev:**  **{result[1]}**")
+        st.write("")
+        st.write("Fitted square root transform mean (appx): ", sampled_mean)
+        st.write("Fitted square root transform std dev (appx): ", sampled_sd)
 
     except ValueError:
         # Display an error if inputs are not valid numbers
